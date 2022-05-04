@@ -125,15 +125,3 @@ export default class T {
 }
 
 globalThis.$T = new T();
-
-// Examples
-// const array = ["array item 1", "array item 2", "array item 3"];
-
-// $T.toggle(".btn-3", ".btn");
-// $T.toggleFade(".btn-3", ".btn", "1s");
-// $T.slider(".btn", ".slider", "100px", "200px", ".6s");
-// $T.display(".click", ".textblock", "none");
-// $T.yolo(1, 10);
-// $T.data(array, "li");
-// $T.animateRight(".btn", "100px", "1s");
-// $T.each(".butn", () => console.log("hi"));

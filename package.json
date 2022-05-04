@@ -1,0 +1,19 @@
+{
+  "name": "torchcode.js",
+  "version": "1.0.0",
+  "description": "Library that torches chunks of code into custom parameters",
+  "main": "torch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZakSchenck/torch-js.git"
+  },
+  "author": "Zak Schenck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZakSchenck/torch-js/issues"
+  },
+  "homepage": "https://github.com/ZakSchenck/torch-js#readme"
+}
