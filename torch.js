@@ -42,6 +42,26 @@ export default class T {
     });
   };
 
+  // Toggles style display on element, as well as toggles images that need to be changed
+  toggleImg = (selector, selectorTwo, mainImg, switchImg) => {
+    const element = this.qry(selectorTwo);
+    const element2 = this.qryTwo(selector);
+    const imgEl = this.qry(switchImg)
+    const imgEl2 = this.qry(mainImg)
+    element2.addEventListener("click", () => {
+      toggleState = !toggleState;
+      if (toggleState) {
+        element.style.display = "block";
+        imgEl.style.display = "block";
+        imgEl2.style.display = "none"
+      } else {
+        element.style.display = "none";
+        imgEl.style.display = "none";
+        imgEl2.style.display = "block"
+      }
+    });
+  }
+
   // Toggles fade on element
   toggleFade = (selector, selectorTwo, trans) => {
     const element = this.qry(selectorTwo);
@@ -82,7 +102,7 @@ export default class T {
   };
 
   // Loops through an array of data and displays all information
-  data = (array, element) => {
+  loop = (array, element) => {
     for (let i = 0; i < array.length; i++) {
       const newEl = document.createElement(element);
       newEl.innerText = array[i];
@@ -121,7 +141,33 @@ export default class T {
     element.forEach((item) => {
       item.addEventListener("click", func);
     });
-  };
+  }
+
+  // Increments number by one on click
+  increment = (selector, number) => {
+    const element = this.qry(selector);
+    element.addEventListener('click', () => number++)
+  }
+
+  // Decrements number by one on click
+  decrement = (selector, number) => {
+    const element = this.qry(selector);
+    element.addEventListener('click', () => number--)
+  }
+
+  // Custom increment amount on click
+  incrementCustom = (selector, selectorTwo, number) => {
+    const element = this.qry(selector);
+    const element2 = this.qry(selectorTwo);
+    element.addEventListener('click', () => element2 += number)
+  }
+
+  // Custom decrement amount on click
+  decrementCustom = (selector, selectorTwo, number) => {
+    const element = this.qry(selector);
+    const element2 = this.qry(selectorTwo);
+    element.addEventListener('click', () => element2 -= number)
+  }
 }
 
 globalThis.$T = new T();
