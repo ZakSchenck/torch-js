@@ -1,4 +1,4 @@
-let toggleState = true;
+let toggleState = false;
 let fadeState = true;
 let sliderState = false;
 export default class T {
@@ -29,38 +29,18 @@ export default class T {
   };
 
   // Toggle style display on element. Selector one is the element being toggled
-  toggle = (selector, selectorTwo) => {
+  toggle = (selector, selectorTwo, style, mouse) => {
     const element = this.qry(selectorTwo);
     const element2 = this.qryTwo(selector);
-    element2.addEventListener("click", () => {
+    element2.addEventListener(mouse, () => {
       toggleState = !toggleState;
       if (toggleState) {
-        element.style.display = "block";
+        element.style.display = style;
       } else {
         element.style.display = "none";
       }
     });
   };
-
-  // Toggles style display on element, as well as toggles images that need to be changed
-  toggleImg = (selector, selectorTwo, mainImg, switchImg) => {
-    const element = this.qry(selectorTwo);
-    const element2 = this.qryTwo(selector);
-    const imgEl = this.qry(switchImg)
-    const imgEl2 = this.qry(mainImg)
-    element2.addEventListener("click", () => {
-      toggleState = !toggleState;
-      if (toggleState) {
-        element.style.display = "block";
-        imgEl.style.display = "block";
-        imgEl2.style.display = "none"
-      } else {
-        element.style.display = "none";
-        imgEl.style.display = "none";
-        imgEl2.style.display = "block"
-      }
-    });
-  }
 
   // Toggles fade on element
   toggleFade = (selector, selectorTwo, trans) => {
@@ -92,6 +72,26 @@ export default class T {
         element2.style.width = "0";
         element2.style.height = "0";
         element2.style.transition = speed;
+      }
+    });
+  };
+
+  // Menu slider animation (works horizontally and vertically)
+  sliderAdv = (selector, selectorTwo, width, height, speed, imgSrc, imgSrc2) => {
+    const element = this.qry(selector);
+    const element2 = this.qryTwo(selectorTwo);
+    element.addEventListener("click", () => {
+      sliderState = !sliderState;
+      if (sliderState) {
+        element2.style.width = width;
+        element2.style.height = height;
+        element2.style.transition = speed;
+        element.src = imgSrc2
+      } else {
+        element2.style.width = "0";
+        element2.style.height = "0";
+        element2.style.transition = speed;
+        element.src = imgSrc
       }
     });
   };
@@ -171,3 +171,4 @@ export default class T {
 }
 
 globalThis.$T = new T();
+
